@@ -14,9 +14,9 @@ const appName = process.env.REACT_APP_NAME;
 
 // Object to hold global settings variables used throughout the frontend
 const globals = {
-  defaultStartDate: new Date(2021, 8, 7),
-  defaultEndDate: new Date(2021, 11, 15),
-  currentTerm: "Fall 2021",
+  defaultStartDate: new Date(2025, 8, 3),
+  defaultEndDate: new Date(2025, 12, 18),
+  currentTerm: "Fall 2025",
   apiUrl: apiUrl,
   name: appName,
 };

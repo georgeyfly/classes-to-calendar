@@ -4,8 +4,9 @@ import secrets
 from typing import Any, Dict, List
 
 from dotenv import load_dotenv
-from pydantic import AnyHttpUrl, BaseModel, BaseSettings, EmailStr
+from pydantic import AnyHttpUrl, BaseModel, EmailStr
 from pydantic.tools import parse_obj_as
+from pydantic_settings import BaseSettings
 
 # Load dotenv environment variables
 load_dotenv()
@@ -29,8 +30,12 @@ class Settings(BaseSettings):
     BASE_DIR: str = os.path.dirname(os.path.dirname(__file__))
 
     # Custom app settings
-    DEFAULT_CLASS_START_DATE: datetime.date = datetime.date(year=2021, month=9, day=7)
-    DEFAULT_CLASS_END_DATE: datetime.date = datetime.date(year=2021, month=12, day=15)
+    DEFAULT_CLASS_START_DATE: datetime.date = datetime.date(year=2025,
+                                                            month=9,
+                                                            day=1)
+    DEFAULT_CLASS_END_DATE: datetime.date = datetime.date(year=2025,
+                                                          month=12,
+                                                          day=18)
 
     # Google config info
     GOOGLE_CLIENT_ID: str
@@ -47,7 +52,8 @@ class Settings(BaseSettings):
         "formatters": {
             "detailed": {
                 "class": "logging.Formatter",
-                "format": "[%(asctime)s] %(levelname)s %(name)-15s: %(message)s",
+                "format":
+                "[%(asctime)s] %(levelname)s %(name)-15s: %(message)s",
             }
         },
         "handlers": {
@@ -58,9 +64,15 @@ class Settings(BaseSettings):
             },
         },
         "loggers": {
-            "app.main": {"handlers": ["console"]},
-            "app.api.api_v1.endpoints.upload": {"handlers": ["console"]},
-            "app.calendar.html_parser": {"handlers": ["console"]},
+            "app.main": {
+                "handlers": ["console"]
+            },
+            "app.api.api_v1.endpoints.upload": {
+                "handlers": ["console"]
+            },
+            "app.calendar.html_parser": {
+                "handlers": ["console"]
+            },
         },
     }
 
